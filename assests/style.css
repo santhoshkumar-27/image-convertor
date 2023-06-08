@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.input-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.input-field {
+    margin-bottom: 20px;
+}
+
+.button-container {
+    text-align: center;
+}
+
+#result-message {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#result-message.success {
+    color: green;
+}
+
+#result-message.error {
+    color: red;
+}
+
+[id="imageInput"]::file-selector-button {
+    padding-block: 0.4rem;
+    padding-inline: 1rem;
+    border-radius: 0.375rem;
+    color: white;
+    background-color: #198754;
+    border-color: unset;
+}

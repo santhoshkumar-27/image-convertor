@@ -1,52 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Image Converter</title>
-    <script>
-        function convertJpgToWebp() {
-            const input = document.getElementById('imageInput');
-            const file = input.files[0];
-
-            if (!file) {
-                alert('Please select an image file.');
-                return;
-            }
-
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-                const img = new Image();
-
-                img.onload = function () {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-
-                    canvas.getContext('2d').drawImage(img, 0, 0);
-                    const webpDataUrl = canvas.toDataURL('image/webp');
-
-                    const link = document.createElement('a');
-                    link.href = webpDataUrl;
-                    link.download = 'converted.webp';
-                    link.click();
-
-                    URL.revokeObjectURL(webpDataUrl);
-                    document.body.removeChild(link);
-                };
-
-                img.src = e.target.result;
-            };
-
-            reader.readAsDataURL(file);
-        }
-    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assests/style.css">
+    <script defer src="assests/index.js"></script>
 </head>
 
-<body>
-    <h1>Image Converter</h1>
-    <input type="file" id="imageInput" accept=".jpg" />
-    <button onclick="convertJpgToWebp()">Convert to WebP</button>
+<body class="m-0">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark mb-4">
+        <div class="container-fluid">
+            <h1>Image Converter</h1>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="input-field text-center">
+            <label class="input-label" for="imageInput">Select an image file (JPG, JPEG, PNG):</label>
+            <input type="file" id="imageInput" class="text-bg-warning text-dark rounded" accept=".jpg,.png,.jpeg" />
+        </div>
+        <div class="button-container">
+            <button onclick="convertJpgToWebp()" class="bg-success border-0 text-light rounded px-2 py-3">Convert to WebP And Download</button>
+        </div>
+        <div id="result-message"></div>
+    </div>
 </body>
 
 </html>
