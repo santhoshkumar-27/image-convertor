@@ -24,11 +24,11 @@ function convertJpgToWebp() {
             link.href = webpDataUrl;
             link.download = 'converted.webp';
             link.click();
-
+            showMessage('success', 'Image converted successfully!');
+            input.files = []
             URL.revokeObjectURL(webpDataUrl);
             document.body.removeChild(link);
 
-            showMessage('success', 'Image converted successfully!');
         };
 
         img.src = e.target.result;
