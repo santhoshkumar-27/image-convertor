@@ -25,10 +25,7 @@ function convertJpgToWebp() {
             link.download = 'converted.webp';
             link.click();
             showMessage('success', 'Image converted successfully!');
-            input.files = []
             URL.revokeObjectURL(webpDataUrl);
-            document.body.removeChild(link);
-
         };
 
         img.src = e.target.result;
